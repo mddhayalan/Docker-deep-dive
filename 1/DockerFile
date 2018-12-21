@@ -1,0 +1,7 @@
+FROM microsoft/dotnet
+
+LABEL maintainer="dheena@gmail.com"
+
+COPY /api .
+
+RUN dotnet run
