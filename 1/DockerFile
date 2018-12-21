@@ -2,6 +2,14 @@ FROM microsoft/dotnet
 
 LABEL maintainer="dheena@gmail.com"
 
-COPY /api .
 
-RUN dotnet run
+WORKDIR /api
+
+COPY . .
+
+RUN dotnet build
+RUN dotnet publish -o /publish
+
+WORKDIR /publish
+
+ENTRYPOINT [ "dotnet", "/publish/api.dll" ]
